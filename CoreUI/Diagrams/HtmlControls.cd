@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TestMonkeys.CoreUI.Html.HtmlControl">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <AssociationLine Name="webElement" Type="OpenQA.Selenium.IWebElement" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="4" />
+        <Point X="3.719" Y="4" />
+        <Point X="3.719" Y="1.941" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAFkIAAAAoAAAAAACAAAAIIEAAAiQBACgA=</HashCode>
+      <FileName>Html\HtmlControl.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="webElement" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TestMonkeys.CoreUI.Html.HtmlEditBox">
+    <Position X="2.75" Y="5" Width="1.5" />
+    <InheritanceLine Type="TestMonkeys.CoreUI.Html.HtmlControl" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="4.123" />
+        <Point X="3.562" Y="4.123" />
+        <Point X="3.562" Y="5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Html\HtmlEditBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestMonkeys.CoreUI.Html.HtmlLink">
+    <Position X="4.5" Y="5" Width="1.5" />
+    <InheritanceLine Type="TestMonkeys.CoreUI.Html.HtmlControl" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="4.123" />
+        <Point X="5.25" Y="4.123" />
+        <Point X="5.25" Y="5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Html\HtmlLink.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestMonkeys.CoreUI.Html.HtmlButton">
+    <Position X="6.25" Y="5" Width="1.5" />
+    <InheritanceLine Type="TestMonkeys.CoreUI.Html.HtmlControl" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="4.123" />
+        <Point X="7" Y="4.123" />
+        <Point X="7" Y="5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Html\HtmlButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestMonkeys.CoreUI.Html.HtmlRow">
+    <Position X="8" Y="5" Width="1.5" />
+    <InheritanceLine Type="TestMonkeys.CoreUI.Html.HtmlControl" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="4.123" />
+        <Point X="8.75" Y="4.123" />
+        <Point X="8.75" Y="5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Html\HtmlRow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestMonkeys.CoreUI.Html.HtmlTable&lt;T&gt;">
+    <Position X="9.75" Y="5" Width="1.5" />
+    <InheritanceLine Type="TestMonkeys.CoreUI.Html.HtmlControl" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="4.123" />
+        <Point X="10.5" Y="4.123" />
+        <Point X="10.5" Y="5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAgBAACIAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Html\HtmlTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestMonkeys.CoreUI.Html.HtmlRadioBox">
+    <Position X="11.5" Y="5" Width="1.5" />
+    <InheritanceLine Type="TestMonkeys.CoreUI.Html.HtmlControl" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="4.123" />
+        <Point X="12.25" Y="4.123" />
+        <Point X="12.25" Y="5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Html\HtmlRadioBox.cs</FileName>
+      <NewMemberFileName>Html\HtmlCheckBox.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestMonkeys.CoreUI.Html.HtmlComboBox">
+    <Position X="13.25" Y="5" Width="1.5" />
+    <InheritanceLine Type="TestMonkeys.CoreUI.Html.HtmlControl" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="4.123" />
+        <Point X="14" Y="4.123" />
+        <Point X="14" Y="5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Html\HtmlComboBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestMonkeys.CoreUI.Html.HtmlCheckBox">
+    <Position X="15" Y="5" Width="1.5" />
+    <InheritanceLine Type="TestMonkeys.CoreUI.Html.HtmlControl" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="4.114" />
+        <Point X="15.75" Y="4.114" />
+        <Point X="15.75" Y="5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Html\HtmlCheckBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="TestMonkeys.CoreUI.Capabilities.ICanFindElements">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Capabilities\ICanFindElements.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OpenQA.Selenium.IWebElement" Collapsed="true">
+    <Position X="3.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

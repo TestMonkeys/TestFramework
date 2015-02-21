@@ -1,0 +1,77 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auditing", "Audit\Auditing.csproj", "{923C09A1-42EC-4204-98F9-0D83E48D9C00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreUI", "CoreUI\CoreUI.csproj", "{D1052214-6E91-4D53-B70D-252352F723B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Configuration", "Configuration\Configuration.csproj", "{D44500F8-5084-4FDB-973F-0C81A1C330FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ConfigurationFiles", "ConfigurationFiles", "{5EEB9612-A742-4C79-90D5-9323C075ED40}"
+	ProjectSection(SolutionItems) = preProject
+		ConfigurationFiles\FrameworkConfig.ini = ConfigurationFiles\FrameworkConfig.ini
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.test", "Core.test\Core.test.csproj", "{1F47A1C6-B951-4220-9297-6E755D3A68B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B996ED99-E773-4835-8580-7C493FF19780}"
+	ProjectSection(SolutionItems) = preProject
+		local.testsettings = local.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContextManager", "ContextManager\ContextManager.csproj", "{3B1AB1BF-89D1-4A1A-AA72-9CEB1423FF7D}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://testmonkeys.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = CoreUI\\CoreUI.csproj
+		SccProjectName1 = CoreUI
+		SccLocalPath1 = CoreUI
+		SccProjectUniqueName2 = Audit\\Auditing.csproj
+		SccProjectName2 = Audit
+		SccLocalPath2 = Audit
+		SccProjectUniqueName3 = Configuration\\Configuration.csproj
+		SccProjectName3 = Configuration
+		SccLocalPath3 = Configuration
+		SccProjectUniqueName4 = Core.test\\Core.test.csproj
+		SccProjectName4 = Core.test
+		SccLocalPath4 = Core.test
+		SccProjectUniqueName5 = ContextManager\\ContextManager.csproj
+		SccProjectName5 = ContextManager
+		SccLocalPath5 = ContextManager
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{923C09A1-42EC-4204-98F9-0D83E48D9C00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{923C09A1-42EC-4204-98F9-0D83E48D9C00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{923C09A1-42EC-4204-98F9-0D83E48D9C00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{923C09A1-42EC-4204-98F9-0D83E48D9C00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1052214-6E91-4D53-B70D-252352F723B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1052214-6E91-4D53-B70D-252352F723B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1052214-6E91-4D53-B70D-252352F723B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1052214-6E91-4D53-B70D-252352F723B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D44500F8-5084-4FDB-973F-0C81A1C330FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D44500F8-5084-4FDB-973F-0C81A1C330FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D44500F8-5084-4FDB-973F-0C81A1C330FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D44500F8-5084-4FDB-973F-0C81A1C330FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F47A1C6-B951-4220-9297-6E755D3A68B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F47A1C6-B951-4220-9297-6E755D3A68B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F47A1C6-B951-4220-9297-6E755D3A68B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F47A1C6-B951-4220-9297-6E755D3A68B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B1AB1BF-89D1-4A1A-AA72-9CEB1423FF7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B1AB1BF-89D1-4A1A-AA72-9CEB1423FF7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B1AB1BF-89D1-4A1A-AA72-9CEB1423FF7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B1AB1BF-89D1-4A1A-AA72-9CEB1423FF7D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

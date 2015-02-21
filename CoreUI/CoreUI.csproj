@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D1052214-6E91-4D53-B70D-252352F723B0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestMonkeys.CoreUI</RootNamespace>
+    <AssemblyName>CoreUI</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebDriver">
+      <HintPath>..\packages\Selenium.WebDriver.2.42.0\lib\net40\WebDriver.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Interactions\Action.cs" />
+    <Compile Include="Interactions\Actions.cs" />
+    <Compile Include="Alert.cs" />
+    <Compile Include="Browser.cs" />
+    <Compile Include="BrowserProvider.cs" />
+    <Compile Include="BrowserType.cs" />
+    <Compile Include="Interactions\IAction.cs" />
+    <Compile Include="Management\CookieJar.cs" />
+    <Compile Include="Management\Options.cs" />
+    <Compile Include="Management\Timeouts.cs" />
+    <Compile Include="Management\Window.cs" />
+    <Compile Include="Search\By.cs" />
+    <Compile Include="Capabilities\ICanFindElements.cs" />
+    <Compile Include="Html\HtmlRadioBox.cs" />
+    <Compile Include="Html\HtmlButton.cs" />
+    <Compile Include="Html\HtmlCheckBox.cs" />
+    <Compile Include="Html\HtmlComboBox.cs" />
+    <Compile Include="Html\HtmlControl.cs" />
+    <Compile Include="Html\HtmlEditBox.cs" />
+    <Compile Include="Html\HtmlLink.cs" />
+    <Compile Include="Html\HtmlRow.cs" />
+    <Compile Include="Html\HtmlTable.cs" />
+    <Compile Include="Management\Navigation.cs" />
+    <Compile Include="Page.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Search\SearchMethod.cs" />
+    <Compile Include="TargetLocator.cs" />
+    <Compile Include="Util\Wait.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Diagrams\HtmlControls.cd" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Audit\Auditing.csproj">
+      <Project>{923c09a1-42ec-4204-98f9-0d83e48d9c00}</Project>
+      <Name>Auditing</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
