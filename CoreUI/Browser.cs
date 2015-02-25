@@ -12,7 +12,7 @@ using By = TestMonkeys.CoreUI.Search.By;
 
 namespace TestMonkeys.CoreUI
 {
-    public class Browser : ICanFindElements, ICanFindElementsByXpath
+    public class Browser : NativeSearchCapable, ICanFindElements, ICanFindElementsByXpath
     {
         private readonly RemoteWebDriver driver;
 
@@ -59,13 +59,12 @@ namespace TestMonkeys.CoreUI
 
         public HtmlControl FindElementByXpath(string xpath)
         {
-            return new HtmlControl {WebElement = driver.FindElementByXPath(xpath)};
+            return new HtmlControl {Parent = this, Selector = By.XPath(xpath)};
         }
 
         public T FindElementByXpath<T>(string xpath) where T : HtmlControl, new()
         {
-            var component = new T {WebElement = driver.FindElementByXPath(xpath)};
-            return component;
+            return new T {Parent = this,Selector = By.XPath(xpath)};
         }
 
         public List<HtmlControl> FindElementsByXpath(string xpath)
@@ -80,12 +79,12 @@ namespace TestMonkeys.CoreUI
 
         public HtmlControl FindElement(By by)
         {
-            return new HtmlControl { WebElement = driver.FindElement(by.SeleniumBy()) };
+            return new HtmlControl { Parent = this, Selector = by};
         }
 
         public T FindElement<T>(By by) where T : HtmlControl, new()
         {
-            return new T {WebElement = driver.FindElement(by.SeleniumBy())};
+            return new T { Parent = this, Selector = by };
         }
 
         public List<HtmlControl> FindElements(By by)
@@ -133,6 +132,11 @@ namespace TestMonkeys.CoreUI
         public TargetLocator SwitchTo()
         {
             return new TargetLocator(this);
+        }
+
+        internal override IWebElement NativeFindBy(OpenQA.Selenium.By by)
+        {
+            return driver.FindElement(by);
         }
     }
 }

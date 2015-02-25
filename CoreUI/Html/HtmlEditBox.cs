@@ -7,12 +7,12 @@ namespace TestMonkeys.CoreUI.Html
     {
         public new string Text
         {
-            get { return webElement.GetAttribute("value"); }
+            get { return WebElement.GetAttribute("value"); }
             set
             {
-                ((IJavaScriptExecutor) ((RemoteWebElement) webElement).WrappedDriver).ExecuteScript(
+                ((IJavaScriptExecutor) ((RemoteWebElement) WebElement).WrappedDriver).ExecuteScript(
                     "arguments[0].setAttribute('value', '" + value + "')",
-                    webElement);
+                    WebElement);
             }
         }
 

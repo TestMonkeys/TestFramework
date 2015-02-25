@@ -7,18 +7,51 @@ using By = TestMonkeys.CoreUI.Search.By;
 
 namespace TestMonkeys.CoreUI.Html
 {
-    public class HtmlControl : ICanFindElements, ICanFindElementsByXpath
+    public class HtmlControl :NativeSearchCapable, ICanFindElements, ICanFindElementsByXpath
     {
-        protected IWebElement webElement;
+        protected NativeSearchCapable parent;
+        protected By selector;
+        private IWebElement webElement;
 
         internal HtmlControl() { }
 
-        //public 
+        public HtmlControl(NativeSearchCapable parent, By selector)
+        {
+            this.parent = parent;
+            this.selector = selector;
+        }
+
+        public NativeSearchCapable Parent
+        {
+            get { return parent; }
+            internal set { parent = value; }
+        }
+
+        public By Selector
+        {
+            get { return selector;}
+            internal set { selector = value; }
+        }
 
         internal IWebElement WebElement
         {
-            get { return webElement; }
+            get { return webElement??parent.NativeFindBy(selector.SeleniumBy()); }
             set { webElement = value; }
+        }
+
+        public bool Exists
+        {
+            get
+            {
+                try
+                {
+                    return WebElement != null;
+                }
+                catch (OpenQA.Selenium.NoSuchElementException)
+                {
+                    return false;
+                }
+            }
         }
 
         public string TagName
@@ -58,13 +91,12 @@ namespace TestMonkeys.CoreUI.Html
 
         public HtmlControl FindElementByXpath(string xpath)
         {
-            return new HtmlControl {webElement = webElement.FindElement(OpenQA.Selenium.By.XPath(xpath))};
+            return new HtmlControl(this,By.XPath(xpath));
         }
 
         public T FindElementByXpath<T>(string xpath) where T : HtmlControl, new()
         {
-            var component = new T {WebElement = webElement.FindElement(OpenQA.Selenium.By.XPath(xpath))};
-            return component;
+            return new T {Parent=this, Selector =By.XPath(xpath)};
         }
 
         public List<HtmlControl> FindElementsByXpath(string xpath)
@@ -82,12 +114,12 @@ namespace TestMonkeys.CoreUI.Html
 
         public HtmlControl FindElement(By by)
         {
-            return new HtmlControl { WebElement = webElement.FindElement(by.SeleniumBy()) };
+            return new HtmlControl {Parent = this,Selector = by};
         }
 
         public T FindElement<T>(By by) where T : HtmlControl, new()
         {
-            return new T {WebElement = webElement.FindElement(by.SeleniumBy())};
+            return new T {Parent = this, Selector = by};
         }
 
         public List<HtmlControl> FindElements(By by)
@@ -128,6 +160,11 @@ namespace TestMonkeys.CoreUI.Html
         public string GetCssValue(string propertyName)
         {
             return webElement.GetCssValue(propertyName);
+        }
+
+        internal override IWebElement NativeFindBy(OpenQA.Selenium.By @by)
+        {
+            return WebElement.FindElement(by);
         }
     }
 }

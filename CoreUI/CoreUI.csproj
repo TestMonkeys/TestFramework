@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Capabilities\ICanFindElementsByXpath.cs" />
+    <Compile Include="Capabilities\NativeSearchCapable.cs" />
     <Compile Include="Interactions\Action.cs" />
     <Compile Include="Interactions\Actions.cs" />
     <Compile Include="Alert.cs" />

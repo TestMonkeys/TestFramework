@@ -20,10 +20,11 @@ namespace TestMonkeys.Core.test
             Browser browser = BrowserProvider.GetBrowserFor(BrowserType.Chrome, "http://www.google.com");
 
             //browser.Navigate().GoToUrl(new Uri("http://www.google.com"));
-            //var input = Wait.Until(()=>browser.FindElementByXpath<HtmlEditBox>("//input[@type='text']"),TimeSpan.FromSeconds(30));
+            var input = Wait.Until(()=>browser.FindElementByXpath<HtmlEditBox>("//input[@type='text']"),TimeSpan.FromSeconds(30));
            //// Audit.LogImage(this,browser.Screenshot(),"Page",Level.Info);
-           // input.Text = "It Works";
-           // input.Text = "secondtry";
+            input.Text = "It Works";
+            input.Text = "secondtry";
+            Console.WriteLine(browser.FindElementByXpath<HtmlEditBox>("//input[@type='text']").Exists);
             Audit.LogImage(this, browser.Screenshot(), "Page", Level.Info);
         }
 
