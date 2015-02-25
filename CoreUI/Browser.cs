@@ -12,7 +12,7 @@ using By = TestMonkeys.CoreUI.Search.By;
 
 namespace TestMonkeys.CoreUI
 {
-    public class Browser : ICanFindElements
+    public class Browser : ICanFindElements, ICanFindElementsByXpath
     {
         private readonly RemoteWebDriver driver;
 
@@ -78,9 +78,19 @@ namespace TestMonkeys.CoreUI
             return driver.FindElementsByXPath(xpath).Select(x => new T {WebElement = x}).ToList();
         }
 
+        public HtmlControl FindElement(By by)
+        {
+            return new HtmlControl { WebElement = driver.FindElement(by.SeleniumBy()) };
+        }
+
         public T FindElement<T>(By by) where T : HtmlControl, new()
         {
             return new T {WebElement = driver.FindElement(by.SeleniumBy())};
+        }
+
+        public List<HtmlControl> FindElements(By by)
+        {
+            return driver.FindElements(by.SeleniumBy()).Select(x => new HtmlControl { WebElement = x }).ToList();
         }
 
         public List<T> FindElements<T>(By by) where T : HtmlControl, new()

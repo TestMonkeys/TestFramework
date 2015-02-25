@@ -8,7 +8,7 @@ using TestMonkeys.CoreUI.Util;
 
 namespace TestMonkeys.CoreUI
 {
-    public abstract class Page : ICanFindElements
+    public abstract class Page : ICanFindElements, ICanFindElementsByXpath
     {
         protected Page(Browser browser)
         {
@@ -46,10 +46,22 @@ namespace TestMonkeys.CoreUI
             return Browser.FindElementsByXpath<T>(xpath);
         }
 
+        public HtmlControl FindElement(By by)
+        {
+            WaitUntilPageLoaded();
+            return Browser.FindElement(by);
+        }
+
         public T FindElement<T>(By by) where T : HtmlControl, new()
         {
             WaitUntilPageLoaded();
             return Browser.FindElement<T>(by);
+        }
+
+        public List<HtmlControl> FindElements(By by) 
+        {
+            WaitUntilPageLoaded();
+            return Browser.FindElements(by);
         }
 
         public List<T> FindElements<T>(By by) where T : HtmlControl, new()

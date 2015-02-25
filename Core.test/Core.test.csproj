@@ -68,6 +68,10 @@
       <Project>{d44500f8-5084-4fdb-973f-0c81a1c330fe}</Project>
       <Name>Configuration</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ContextManager\ContextManager.csproj">
+      <Project>{3b1ab1bf-89d1-4a1a-aa72-9ceb1423ff7d}</Project>
+      <Name>ContextManager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CoreUI\CoreUI.csproj">
       <Project>{d1052214-6e91-4d53-b70d-252352f723b0}</Project>
       <Name>CoreUI</Name>

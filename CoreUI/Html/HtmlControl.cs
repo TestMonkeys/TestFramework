@@ -7,9 +7,13 @@ using By = TestMonkeys.CoreUI.Search.By;
 
 namespace TestMonkeys.CoreUI.Html
 {
-    public class HtmlControl : ICanFindElements
+    public class HtmlControl : ICanFindElements, ICanFindElementsByXpath
     {
         protected IWebElement webElement;
+
+        internal HtmlControl() { }
+
+        //public 
 
         internal IWebElement WebElement
         {
@@ -76,9 +80,19 @@ namespace TestMonkeys.CoreUI.Html
             return webElement.FindElements(OpenQA.Selenium.By.XPath(xpath)).Select(x => new T {WebElement = x}).ToList();
         }
 
+        public HtmlControl FindElement(By by)
+        {
+            return new HtmlControl { WebElement = webElement.FindElement(by.SeleniumBy()) };
+        }
+
         public T FindElement<T>(By by) where T : HtmlControl, new()
         {
             return new T {WebElement = webElement.FindElement(by.SeleniumBy())};
+        }
+
+        public List<HtmlControl> FindElements(By by)
+        {
+            return webElement.FindElements(by.SeleniumBy()).Select(x => new HtmlControl { WebElement = x }).ToList();
         }
 
         public List<T> FindElements<T>(By by) where T : HtmlControl, new()
