@@ -2,7 +2,7 @@
 {
     public class HtmlRadioBox : HtmlControl
     {
-        public bool Selected
+        public new bool Selected
         {
             get { return IsSelected; }
         }

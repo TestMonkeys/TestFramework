@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using OpenQA.Selenium;
@@ -7,7 +8,7 @@ using By = TestMonkeys.CoreUI.Search.By;
 
 namespace TestMonkeys.CoreUI.Html
 {
-    public class HtmlControl :NativeSearchCapable, ICanFindElements, ICanFindElementsByXpath
+    public class HtmlControl :NativeSearchCapable, ICanFindElements, ICanFindElementsByXpath,Compatibility.IWebElement
     {
         protected NativeSearchCapable parent;
         protected By selector;
@@ -47,7 +48,7 @@ namespace TestMonkeys.CoreUI.Html
                 {
                     return WebElement != null;
                 }
-                catch (OpenQA.Selenium.NoSuchElementException)
+                catch (NoSuchElementException)
                 {
                     return false;
                 }
@@ -72,6 +73,12 @@ namespace TestMonkeys.CoreUI.Html
         protected bool IsSelected
         {
             get { return webElement.Selected; }
+        }
+
+        [Obsolete("You should use HtmlCheckBox class instead of calling Selected on HtmlControl")]
+        public bool Selected
+        {
+            get { return IsSelected;}
         }
 
         public Point Location
@@ -165,6 +172,16 @@ namespace TestMonkeys.CoreUI.Html
         internal override IWebElement NativeFindBy(OpenQA.Selenium.By @by)
         {
             return WebElement.FindElement(by);
+        }
+
+        Compatibility.IWebElement Compatibility.IWebElement.FindElement(By by)
+        {
+            return FindElement(by);
+        }
+
+        List<Compatibility.IWebElement> Compatibility.IWebElement.FindElements(By by)
+        {
+            return FindElements(by).Select(x => x as Compatibility.IWebElement).ToList();
         }
     }
 }

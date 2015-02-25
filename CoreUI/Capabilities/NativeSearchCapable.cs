@@ -1,5 +1,4 @@
-﻿using System.Net.Configuration;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace TestMonkeys.CoreUI.Capabilities
 {
