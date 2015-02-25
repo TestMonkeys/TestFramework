@@ -1,7 +1,7 @@
 ﻿using System;
 using OpenQA.Selenium;
 
-namespace TestMonkeys.CoreUI
+namespace TestMonkeys.CoreUI.Management
 {
     public class Navigation
     {
