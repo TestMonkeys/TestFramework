@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using TestMonkeys.Auditing.Events;
 using Image = TestMonkeys.Auditing.Items.Image;
 
@@ -20,6 +21,7 @@ namespace TestMonkeys.Auditing
 
         public static event EventHandler<MessageLoggedEventArgs> MessageLogged;
         public static event EventHandler<ImageLoggedEventArgs> ImageLogged;
+        public static event EventHandler<FileLoggedEventArgs> FileLogged;
 
         public static void Log(string message, Level level)
         {
@@ -111,6 +113,23 @@ namespace TestMonkeys.Auditing
                     Image = customScreenShotProvider.GetScreenShot(),
                     Level = level,
                     Message = message,
+                    Sender = sender
+                });
+            }
+        }
+
+        public static void LogFile(FileInfo file)
+        {
+            LogFile(null, file);
+        }
+
+        public static void LogFile(object sender, FileInfo file)
+        {
+            if (FileLogged != null)
+            {
+                FileLogged(null, new FileLoggedEventArgs
+                {
+                    File = file,
                     Sender = sender
                 });
             }

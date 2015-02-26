@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Audit.cs" />
     <Compile Include="DefaultScreenShotProvider.cs" />
+    <Compile Include="Events\FileLoggedEventArgs .cs" />
     <Compile Include="Events\ImageLoggedEventArgs.cs" />
     <Compile Include="Events\MessageLoggedEventArgs.cs" />
     <Compile Include="IScreenShotProvider.cs" />
