@@ -49,7 +49,10 @@
   <ItemGroup>
     <Compile Include="Capabilities\ICanFindElementsByXpath.cs" />
     <Compile Include="Capabilities\NativeSearchCapable.cs" />
+    <Compile Include="Compatibility\ChromeOptions.cs" />
     <Compile Include="Compatibility\IWebElement.cs" />
+    <Compile Include="Compatibility\Proxy.cs" />
+    <Compile Include="Compatibility\ProxyKind.cs" />
     <Compile Include="Interactions\Action.cs" />
     <Compile Include="Interactions\Actions.cs" />
     <Compile Include="Alert.cs" />
