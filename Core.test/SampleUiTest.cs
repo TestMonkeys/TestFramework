@@ -32,7 +32,7 @@ namespace TestMonkeys.Core.test
         public void Audit_ScreenshotTest()
         {
             LogWatcher.SetContext(TestContext);
-            Audit.LogScreenshot(this,"TestName",Level.Error);
+            Audit.LogScreenShot(this,"TestName",Level.Error);
         }
     }
 }

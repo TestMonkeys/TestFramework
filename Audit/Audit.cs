@@ -1,13 +1,23 @@
 ﻿using System;
 using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
 using TestMonkeys.Auditing.Events;
+using Image = TestMonkeys.Auditing.Items.Image;
 
 namespace TestMonkeys.Auditing
 {
     public class Audit
     {
+        private static IScreenShotProvider screenShotProvider;
+
+        /// <summary>
+        ///     Gets or Sets the ScreenShotProvider
+        /// </summary>
+        public static IScreenShotProvider ScreenShotProvider
+        {
+            get { return screenShotProvider ?? (screenShotProvider = new DefaultScreenShotProvider()); }
+            set { screenShotProvider = value; }
+        }
+
         public static event EventHandler<MessageLoggedEventArgs> MessageLogged;
         public static event EventHandler<ImageLoggedEventArgs> ImageLogged;
 
@@ -21,21 +31,26 @@ namespace TestMonkeys.Auditing
             if (MessageLogged != null)
             {
                 MessageLogged(null, new MessageLoggedEventArgs
-                    {
-                        Sender = sender,
-                        Level = level,
-                        Message = message
-                    });
+                {
+                    Sender = sender,
+                    Level = level,
+                    Message = message
+                });
             }
         }
 
-        public static void LogImage(object sender, Bitmap image, string message, Level level)
+        public static void LogImage(Bitmap bitmap, string message, Level level)
+        {
+            LogImage(null, bitmap, message, level);
+        }
+
+        public static void LogImage(object sender, Bitmap bitmap, string message, Level level)
         {
             if (ImageLogged != null)
             {
                 ImageLogged(null, new ImageLoggedEventArgs
                 {
-                    Image = image,
+                    Image = bitmap,
                     Level = level,
                     Message = message,
                     Sender = sender
@@ -43,60 +58,62 @@ namespace TestMonkeys.Auditing
             }
         }
 
-        public static void LogScreenshot(object sender, string message, Level level)
+        public static void LogImage(Image image, string message, Level level)
+        {
+            LogImage(null, image, message, level);
+        }
+
+        public static void LogImage(object sender, Image image, string message, Level level)
         {
             if (ImageLogged != null)
             {
-                Size sz = Screen.PrimaryScreen.Bounds.Size;
-                IntPtr hDesk = GetDesktopWindow();
-                IntPtr hSrce = GetWindowDC(hDesk);
-                IntPtr hDest = CreateCompatibleDC(hSrce);
-                IntPtr hBmp = CreateCompatibleBitmap(hSrce, sz.Width, sz.Height);
-                IntPtr hOldBmp = SelectObject(hDest, hBmp);
-                bool b=BitBlt(hDest, 0, 0, sz.Width, sz.Height, hSrce, 0, 0,
-                       CopyPixelOperation.SourceCopy | CopyPixelOperation.CaptureBlt);
-                Bitmap bmp = Image.FromHbitmap(hBmp);
-                SelectObject(hDest, hOldBmp);
-                DeleteObject(hBmp);
-                DeleteDC(hDest);
-                ReleaseDC(hDesk, hSrce);
-
                 ImageLogged(null, new ImageLoggedEventArgs
-                    {
-                        Image = bmp,
-                        Level = level,
-                        Message = message,
-                        Sender = sender
-                    });
+                {
+                    Image = image.Bitmap,
+                    Level = level,
+                    Message = message,
+                    Sender = sender
+                });
             }
         }
 
-        [DllImport("gdi32.dll")]
-        private static extern bool BitBlt(IntPtr hdcDest, int xDest, int yDest, int wDest, int hDest, IntPtr hdcSource,
-                                          int xSrc, int ySrc, CopyPixelOperation rop);
+        public static void LogScreenShot(string message, Level level)
+        {
+            LogScreenShot(null, message, level);
+        }
 
-        [DllImport("user32.dll")]
-        private static extern bool ReleaseDC(IntPtr hWnd, IntPtr hDc);
+        public static void LogScreenShot(object sender, string message, Level level)
+        {
+            if (ImageLogged != null)
+            {
+                ImageLogged(null, new ImageLoggedEventArgs
+                {
+                    Image = ScreenShotProvider.GetScreenShot(),
+                    Level = level,
+                    Message = message,
+                    Sender = sender
+                });
+            }
+        }
 
-        [DllImport("gdi32.dll")]
-        private static extern IntPtr DeleteDC(IntPtr hDc);
+        public static void LogScreenShot(IScreenShotProvider customScreenShotProvider, string message, Level level)
+        {
+            LogScreenShot(null, customScreenShotProvider, message, level);
+        }
 
-        [DllImport("gdi32.dll")]
-        private static extern IntPtr DeleteObject(IntPtr hDc);
-
-        [DllImport("gdi32.dll")]
-        private static extern IntPtr CreateCompatibleBitmap(IntPtr hdc, int nWidth, int nHeight);
-
-        [DllImport("gdi32.dll")]
-        private static extern IntPtr CreateCompatibleDC(IntPtr hdc);
-
-        [DllImport("gdi32.dll")]
-        private static extern IntPtr SelectObject(IntPtr hdc, IntPtr bmp);
-
-        [DllImport("user32.dll")]
-        public static extern IntPtr GetDesktopWindow();
-
-        [DllImport("user32.dll")]
-        public static extern IntPtr GetWindowDC(IntPtr ptr);
+        public static void LogScreenShot(object sender, IScreenShotProvider customScreenShotProvider, string message,
+            Level level)
+        {
+            if (ImageLogged != null)
+            {
+                ImageLogged(null, new ImageLoggedEventArgs
+                {
+                    Image = customScreenShotProvider.GetScreenShot(),
+                    Level = level,
+                    Message = message,
+                    Sender = sender
+                });
+            }
+        }
     }
 }
