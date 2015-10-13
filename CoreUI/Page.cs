@@ -93,7 +93,7 @@ namespace TestMonkeys.CoreUI
         {
             try
             {
-                Wait.UntilTrue(PageLoaded, TimeSpan.FromMinutes(1));
+                Wait.UntilTrue(PageLoaded, TimeSpan.FromMinutes(2));
             }
             catch
             {

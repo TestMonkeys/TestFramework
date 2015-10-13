@@ -57,22 +57,22 @@ namespace TestMonkeys.CoreUI.Html
 
         public string TagName
         {
-            get { return webElement.TagName; }
+            get { return WebElement.TagName; }
         }
 
         public string Text
         {
-            get { return webElement.Text; }
+            get { return WebElement.Text; }
         }
 
         public bool Enabled
         {
-            get { return webElement.Enabled; }
+            get { return WebElement.Enabled; }
         }
 
         protected bool IsSelected
         {
-            get { return webElement.Selected; }
+            get { return WebElement.Selected; }
         }
 
         [Obsolete("You should use HtmlCheckBox class instead of calling Selected on HtmlControl")]
@@ -83,17 +83,17 @@ namespace TestMonkeys.CoreUI.Html
 
         public Point Location
         {
-            get { return webElement.Location; }
+            get { return WebElement.Location; }
         }
 
         public Size Size
         {
-            get { return webElement.Size; }
+            get { return WebElement.Size; }
         }
 
         public bool Displayed
         {
-            get { return webElement.Displayed; }
+            get { return WebElement.Displayed; }
         }
 
         public HtmlControl FindElementByXpath(string xpath)
@@ -109,14 +109,14 @@ namespace TestMonkeys.CoreUI.Html
         public List<HtmlControl> FindElementsByXpath(string xpath)
         {
             return
-                webElement.FindElements(OpenQA.Selenium.By.XPath(xpath))
-                          .Select(x => new HtmlControl {webElement = x})
+                WebElement.FindElements(OpenQA.Selenium.By.XPath(xpath))
+                          .Select(x => new HtmlControl { WebElement = x})
                           .ToList();
         }
 
         public List<T> FindElementsByXpath<T>(string xpath) where T : HtmlControl, new()
         {
-            return webElement.FindElements(OpenQA.Selenium.By.XPath(xpath)).Select(x => new T {WebElement = x}).ToList();
+            return WebElement.FindElements(OpenQA.Selenium.By.XPath(xpath)).Select(x => new T {WebElement = x}).ToList();
         }
 
         public HtmlControl FindElement(By by)
@@ -136,37 +136,37 @@ namespace TestMonkeys.CoreUI.Html
 
         public List<T> FindElements<T>(By by) where T : HtmlControl, new()
         {
-            return webElement.FindElements(by.SeleniumBy()).Select(x => new T {WebElement = x}).ToList();
+            return WebElement.FindElements(by.SeleniumBy()).Select(x => new T {WebElement = x}).ToList();
         }
 
         public void Clear()
         {
-            webElement.Clear();
+            WebElement.Clear();
         }
 
         public void SendKeys(string text)
         {
-            webElement.SendKeys(text);
+            WebElement.SendKeys(text);
         }
 
         public void Submit()
         {
-            webElement.Submit();
+            WebElement.Submit();
         }
 
         public void Click()
         {
-            webElement.Click();
+            WebElement.Click();
         }
 
         public string GetAttribute(string attributeName)
         {
-            return webElement.GetAttribute(attributeName);
+            return WebElement.GetAttribute(attributeName);
         }
 
         public string GetCssValue(string propertyName)
         {
-            return webElement.GetCssValue(propertyName);
+            return WebElement.GetCssValue(propertyName);
         }
 
         internal override IWebElement NativeFindBy(OpenQA.Selenium.By @by)
